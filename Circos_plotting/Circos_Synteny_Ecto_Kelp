@@ -1,0 +1,137 @@
+# Circos synteny plot between Ectocarpus and Giant Kelp
+
+karyotype = Ortho_plot/karyotype_GK_from_excel.chr.txt, Ortho_plot/karyotype_ES_from_excel_2_no_colors.chr.txt
+
+chromosomes_display_default = no
+chromosomes = scaffold_1; scaffold_2; scaffold_3; scaffold_4; scaffold_5; scaffold_6; scaffold_7; scaffold_8; scaffold_9; scaffold_10; scaffold_11; scaffold_12; scaffold_13; scaffold_14; scaffold_15; scaffold_16; scaffold_17; scaffold_18; scaffold_19; scaffold_20; scaffold_21; scaffold_22; scaffold_23; scaffold_24; scaffold_25; scaffold_26; scaffold_27; scaffold_28; scaffold_29; scaffold_30; scaffold_31; scaffold_32; scaffold_33; scaffold_34; chr_00; chr_01; chr_02; chr_03; chr_04; chr_05; chr_06; chr_07; chr_08; chr_09; chr_10; chr_11; chr_12; chr_13; chr_14; chr_15; chr_16; chr_17; chr_18; chr_19; chr_20; chr_21; chr_22; chr_23; chr_24; chr_25; chr_26; chr_27; chr_28
+chromosomes_order = scaffold_1, scaffold_32, scaffold_2, scaffold_3, scaffold_4, scaffold_5, scaffold_18, scaffold_6, scaffold_7, scaffold_8, scaffold_27, scaffold_15, scaffold_9, scaffold_21, scaffold_10, scaffold_29, scaffold_11, scaffold_23, scaffold_12, scaffold_33, scaffold_13, scaffold_14, scaffold_16, scaffold_17, scaffold_19, scaffold_31, scaffold_20, scaffold_22, scaffold_24, scaffold_25, scaffold_26, scaffold_28, scaffold_34, scaffold_30, chr_26, chr_00, chr_27, chr_10, chr_24, chr_17, chr_15, chr_03, chr_25, chr_21, chr_09, chr_22, chr_01, chr_23, chr_16, chr_05, chr_19, chr_28, chr_04, chr_20, chr_02, chr_14, chr_07, chr_06, chr_11, chr_12, chr_13, chr_18, chr_08
+
+#chromosomes_scale = /chr/=0.5r,/scaffold/=0.5r
+chromosomes_reverse = chr_00, chr_01, chr_02, chr_03, chr_04, chr_05, chr_06, chr_07, chr_08, chr_09, chr_10, chr_11, chr_12, chr_13, chr_14, chr_15, chr_16, chr_17, chr_19, chr_20, chr_21, chr_22, chr_23, chr_24, chr_25, chr_26, chr_27, chr_28, scaffold_32
+
+<links>
+<link>
+file = Ortho_plot/ecto_bundles_3M_10_new_annot.txt #bundles_1e6_3_BR.txt   #Circos_CAZy_links_red.txt #bundles_1e6_3_BR.txt # Put bundles.txt for bundle. Bundles in 3MB of 2 or more genes... Circos_SC_Ortho_final_ready.txt
+ribbon = yes
+bezier_radius = 0r
+crest = 0
+radius = 0.90r
+thickness = 1p
+color  = blackweak
+#stroke_color     = black_a1
+#stroke_thickness = 1
+
+<rules>
+<rule>
+condition  = 1
+z          = eval(1 - ( scalar min(var(size2),var(size1) ) ) )
+</rule>
+</rules>
+
+</link>
+</links>
+
+<ideogram>
+
+<spacing>
+default = 0.001r
+
+<pairwise scaffold_1 chr_08>
+spacing = 10r
+</pairwise>
+
+<pairwise scaffold_30 chr_26>
+spacing = 10r
+</pairwise>
+
+</spacing>
+
+radius = 0.80r
+thickness = 12p
+
+fill = yes
+fill_color = vgray
+#stroke_color = black
+#stroke_thickness = 3p
+
+show_label = yes
+label_font = bold
+label_radius = 1r + 30p
+label_size = 30
+label_parallel = no
+
+</ideogram>
+
+<image>
+<<include etc/image.conf>>
+</image>
+
+<<include etc/colors_fonts_patterns.conf>>
+<<include ../Real_plots/housekeeping.conf>>
+
+<plots>
+<plot>
+show = yes
+type = histogram
+file = ecto_links_density_1e6_num_norm.txt
+min = 0
+max = 85
+r0 = 0.90r
+r1 = 0.99r
+fill_color = black
+</plot>
+</plots>
+
+show_ticks          = yes
+show_tick_labels    = yes
+
+<ticks>
+radius               = dims(ideogram,radius_outer)
+label_offset         = 5p
+orientation          = out
+label_multiplier     = 1e-6
+color                = black
+
+<tick>
+show = no
+rspacing        = 1
+spacing_type = relative
+size           = 10p
+color          = black
+thickness      = 2p
+show_label     = yes
+label_size     = 20p
+label_color    = black
+label_offset   = 10p
+format         = %d
+label_relative = no
+</tick>
+
+#<tick>
+#spacing        = 5000000u
+#size           = 10p
+#color          = black
+#thickness      = 2p
+#show_label     = yes
+#label_size     = 20p
+#label_color    = black
+#label_offset   = 10p
+#format         = %d
+#</tick>
+
+
+<tick>
+show = no
+spacing        = 5000000u
+size           = 12p
+color          = lgray
+thickness      = 1p
+show_label     = no
+label_size     = 10p
+label_color    = lgray
+label_offset   = 1p
+format         = %d
+</tick>
+
+</ticks>
+
