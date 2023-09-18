@@ -1,0 +1,141 @@
+# Circos plotting showing synteny between Undaria and Giant Kelp
+
+karyotype = ./karyotype_GK_from_excel.chr.txt, ./Undaria_karyotype.txt
+
+chromosomes_display_default = no
+
+chromosomes = scaffold_1; scaffold_2; scaffold_3; scaffold_4; scaffold_5; scaffold_6; scaffold_7; scaffold_8; scaffold_9; scaffold_10; scaffold_11; scaffold_12; scaffold_13; scaffold_14; scaffold_15; scaffold_16; scaffold_17; scaffold_18; scaffold_19; scaffold_20; scaffold_21; scaffold_22; scaffold_23; scaffold_24; scaffold_25; scaffold_26; scaffold_27; scaffold_28; scaffold_29; scaffold_30; scaffold_31; scaffold_32; scaffold_33; scaffold_34; JABAKD01_1; JABAKD01_2; JABAKD01_3; JABAKD01_4; JABAKD01_5; JABAKD01_6; JABAKD01_7; JABAKD01_8; JABAKD01_9; JABAKD01_10; JABAKD01_11; JABAKD01_12; JABAKD01_13; JABAKD01_14; JABAKD01_15; JABAKD01_16; JABAKD01_17; JABAKD01_18; JABAKD01_19; JABAKD01_20; JABAKD01_21; JABAKD01_22; JABAKD01_23; JABAKD01_24; JABAKD01_25; JABAKD01_26; JABAKD01_27; JABAKD01_28; JABAKD01_29; JABAKD01_30
+#chromosomes = scaffold_1; scaffold_15; scaffold_32; JABAKD01_25; JABAKD01_13
+
+chromosomes_order = scaffold_32, scaffold_2, scaffold_1, scaffold_15, scaffold_18, scaffold_4, scaffold_27, scaffold_5, scaffold_6, scaffold_8, scaffold_9, scaffold_26, scaffold_10, scaffold_12, scaffold_14, scaffold_16, scaffold_17, scaffold_11, scaffold_7, scaffold_3, scaffold_19, scaffold_20, scaffold_21, scaffold_22, scaffold_23, scaffold_24, scaffold_25, scaffold_34, scaffold_28, scaffold_29, scaffold_30, scaffold_31, scaffold_13, scaffold_33, JABAKD01_30, JABAKD01_18, JABAKD01_8, JABAKD01_17, JABAKD01_10, JABAKD01_24, JABAKD01_15, JABAKD01_27, JABAKD01_19, JABAKD01_6, JABAKD01_7, JABAKD01_3, JABAKD01_26, JABAKD01_9, JABAKD01_2, JABAKD01_11, JABAKD01_5, JABAKD01_4, JABAKD01_14, JABAKD01_12, JABAKD01_22, JABAKD01_28, JABAKD01_21, JABAKD01_29, JABAKD01_20, JABAKD01_16, JABAKD01_1, JABAKD01_25, JABAKD01_23, JABAKD01_13
+#chromosomes_order = scaffold_32, scaffold_1, scaffold_15, JABAKD01_25, JABAKD01_13
+
+#chromosomes_scale = /chr/=0.5r,/scaffold/=0.5r
+chromosomes_reverse = JABAKD01_1; JABAKD01_2; JABAKD01_4; JABAKD01_5; JABAKD01_6; JABAKD01_7; JABAKD01_8; JABAKD01_9; JABAKD01_10; JABAKD01_11; JABAKD01_12; JABAKD01_14; JABAKD01_15; JABAKD01_16; JABAKD01_17; JABAKD01_18; JABAKD01_19; JABAKD01_20; JABAKD01_21; JABAKD01_22; JABAKD01_23; JABAKD01_24; JABAKD01_26; JABAKD01_27; JABAKD01_28; JABAKD01_29; JABAKD01_30; scaffold_1; scaffold_15; scaffold_19; scaffold_32
+
+<links>
+<link>
+file = /scratch2/jdiesel/Undaria_synteny_plot/undaria_bundles_3M_10_new_annot.txt #bundles_undaria_1M_3.txt #bundles_undaria_1M_3.txt #bundles_undaria_gray.txt #links_ortho_undaria_kelp_color.txt #bundles_undaria_color.txt   #links_ortho_undaria_kelp.txt
+ribbon = yes
+bezier_radius = 0r
+crest = 0
+radius = 0.90r
+thickness = 1p
+# color  = blackweak
+#stroke_color     = black_a1
+#stroke_thickness = 1
+
+<rules>
+<rule>
+condition  = 1
+z          = eval(1 - ( scalar min(var(size2),var(size1) ) ) )
+</rule>
+</rules>
+
+</link>
+</links>
+
+<ideogram>
+
+<spacing>
+default = 0.001r
+
+<pairwise scaffold_32 JABAKD01_13>
+spacing = 10r
+</pairwise>
+
+<pairwise scaffold_33 JABAKD01_30>
+spacing = 10r
+</pairwise>
+
+</spacing>
+
+radius = 0.80r
+thickness = 12p
+
+fill = yes
+fill_color = vgray
+#stroke_color = black
+#stroke_thickness = 3p
+
+show_label = yes
+label_font = bold
+label_radius = 1r + 30p
+label_size = 30
+label_parallel = no
+
+</ideogram>
+
+<image>
+<<include etc/image.conf>>
+</image>
+
+<<include etc/colors_fonts_patterns.conf>>
+<<include ../Real_plots/housekeeping.conf>>
+
+<plots>
+<plot>
+show = yes
+type = histogram
+file = undaria_links_density_1e6.txt
+min = 0
+max = 55
+r0 = 0.90r
+r1 = 0.99r
+fill_color = black
+</plot>
+</plots>
+
+show_ticks          = yes
+show_tick_labels    = yes
+
+<ticks>
+radius               = dims(ideogram,radius_outer)
+label_offset         = 5p
+orientation          = out
+label_multiplier     = 1e-6
+color                = black
+
+<tick>
+show = no
+rspacing        = 1
+spacing_type = relative
+size           = 10p
+color          = black
+thickness      = 2p
+show_label     = yes
+label_size     = 20p
+label_color    = black
+label_offset   = 10p
+format         = %d
+label_relative = no
+</tick>
+
+#<tick>
+#spacing        = 5000000u
+#size           = 10p
+#color          = black
+#thickness      = 2p
+#show_label     = yes
+#label_size     = 20p
+#label_color    = black
+#label_offset   = 10p
+#format         = %d
+#</tick>
+
+
+<tick>
+show = no
+spacing        = 5000000u
+size           = 12p
+color          = lgray
+thickness      = 1p
+show_label     = no
+label_size     = 10p
+label_color    = lgray
+label_offset   = 1p
+format         = %d
+</tick>
+
+</ticks>
+
